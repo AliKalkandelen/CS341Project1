@@ -1,8 +1,12 @@
+#include <ctype.h>
+#include <cstdlib>
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <stdio.h>
-#include <ctype.h>
+
+
+
+
+
 
 using namespace std;
 
@@ -10,12 +14,12 @@ string enter;
 string input;
 
 enum State {q0,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,F,err};
-
 State _state;
 
-void changeState(State newstate){_state = newstate;}
-void printState(){cout<<"Current State: q"<< _state <<endl;}
-void dump() {changeState(State::err);}
+void changeState(State newstate);
+void printState();
+void dump();
+
 
 
 int main(){
@@ -30,7 +34,7 @@ getline(cin, input);
 cout<<endl<<"Okay Here Is Your Report: "<<endl;
 _state = State::q0;
 printState();
-for(int i=0; i < input.length(); i++)
+for(unsigned int i=0; i < input.length(); i++)
 {
 
     cout<<"Character: "<<input[i]<<" ";
@@ -93,4 +97,6 @@ getline(cin, enter);
 
 return 0;
 }
-
+void changeState(State newstate){_state = newstate;}
+void printState(){cout<<"Current State: q"<< _state <<endl;}
+void dump() {changeState(State::err);}
